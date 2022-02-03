@@ -7,5 +7,9 @@ import (
 func main() {
 	app := fiber.New()
 
-	app.Listen(":8080")
+	app.Get("/", func(c *fiber.Ctx) error {
+		return c.SendString("Product Feedback Server")
+	})
+
+	app.Listen(":9000")
 }
