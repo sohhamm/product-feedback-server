@@ -12,5 +12,5 @@ type ProductRequest struct {
 	Category string
 	Upvotes  uint
 	Status   string
-	Comments []Comment
+	// Comments Comment
 }
