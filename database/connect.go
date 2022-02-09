@@ -5,7 +5,7 @@ import (
 	"strconv"
 
 	"github.com/sohhamm/product-feedback-server/config"
-	"github.com/sohhamm/product-feedback-server/models"
+	"github.com/sohhamm/product-feedback-server/model"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 )
@@ -33,6 +33,6 @@ func ConnectDB() {
 
 	fmt.Println("Connected to the database 🔥")
 
-	DB.AutoMigrate(&models.ProductRequest{})
+	DB.AutoMigrate(&model.Feedback{})
 
 }

@@ -1,11 +1,11 @@
-package models
+package model
 
 import (
 	"github.com/google/uuid"
 	"gorm.io/gorm"
 )
 
-type ProductRequest struct {
+type Feedback struct {
 	gorm.Model
 	ID       uuid.UUID `gorm:"type:uuid"`
 	Title    string
