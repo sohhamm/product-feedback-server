@@ -2,16 +2,14 @@ package models
 
 import (
 	"github.com/google/uuid"
-	"gorm.io/gorm"
 )
 
 type Feedback struct {
-	gorm.Model
-	ID          uuid.UUID `gorm:"type:uuid;primaryKey"`
-	Title       string
-	Category    string
-	Upvotes     uint
-	Status      string
-	Description string
+	ID          uuid.UUID `json:"id" gorm:"type:uuid"`
+	Title       string    `json:"title" gorm:"not null"`
+	Category    string    `json:"category" gorm:"not null"`
+	Upvotes     uint      `json:"upvotes" gorm:"default:0"`
+	Status      string    `json:"status" gorm:"default:suggestion"`
+	Description string    `json:"description" gorm:"not null"`
 	// Comments Comment
 }

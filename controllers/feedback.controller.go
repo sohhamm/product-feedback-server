@@ -7,27 +7,22 @@ import (
 )
 
 func GetAllFeedbacks(c *fiber.Ctx) error {
-
-	db := database.DB.Db
 	feedbacks := []models.Feedback{}
 
-	db.Find(&feedbacks)
+	database.DB.Db.Find(&feedbacks)
 
 	return c.Status(fiber.StatusOK).JSON(feedbacks)
 
 }
 
 func CreateFeedback(c *fiber.Ctx) error {
-	// db := database.DB
-
 	feedback := new(models.Feedback)
 
-	// var feedback model.Feedback
-
 	if err := c.BodyParser(feedback); err != nil {
-		c.Status(fiber.StatusBadRequest).SendString(err.Error())
-		return err
+		return c.Status(fiber.StatusBadRequest).JSON(err.Error())
 	}
+
+	database.DB.Db.Create(&feedback)
 
 	return c.Status(fiber.StatusOK).JSON(feedback)
 
