@@ -1,8 +1,6 @@
 package routes
 
 import (
-	"log"
-
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/logger"
 )
@@ -12,6 +10,6 @@ func SetupRoutes(app *fiber.App) {
 
 	v1 := api.Group("/v1")
 
-	log.Print(v1)
+	FeedbackRoutes(v1)
 
 }

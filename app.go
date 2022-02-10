@@ -7,6 +7,7 @@ import (
 	"github.com/gofiber/fiber/v2/middleware/cors"
 	"github.com/sohhamm/product-feedback-server/config"
 	"github.com/sohhamm/product-feedback-server/database"
+	"github.com/sohhamm/product-feedback-server/routes"
 )
 
 func main() {
@@ -25,6 +26,7 @@ func main() {
 	})
 
 	//Set up routes
+	routes.SetupRoutes(app)
 
 	// Not found route
 	app.Use(func(c *fiber.Ctx) error {

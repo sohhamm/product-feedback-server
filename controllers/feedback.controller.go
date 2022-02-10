@@ -8,8 +8,8 @@ import (
 
 func GetAllFeedbacks(c *fiber.Ctx) error {
 
-	db := database.DB
-	var feedbacks []models.Feedback
+	db := database.DB.Db
+	feedbacks := []models.Feedback{}
 
 	db.Find(&feedbacks)
 
