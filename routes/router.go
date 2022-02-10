@@ -1,7 +1,7 @@
-package router
+package routes
 
 import (
-	"fmt"
+	"log"
 
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/logger"
@@ -12,6 +12,6 @@ func SetupRoutes(app *fiber.App) {
 
 	v1 := api.Group("/v1")
 
-	fmt.Print(v1)
+	log.Print(v1)
 
 }

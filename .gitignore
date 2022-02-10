@@ -1,2 +1,4 @@
 .env
 server
+# air: hot reload
+tmp

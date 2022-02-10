@@ -10,7 +10,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 make: *** No rule to make target `all'.  Stop.
  
 
-# Make data base, printed on Wed Feb  9 20:07:01 2022
+# Make data base, printed on Thu Feb 10 07:44:16 2022
 
 # Variables
 
@@ -41,14 +41,14 @@ MAKEFILE_LIST :=  Makefile
 # environment
 VSCODE_AMD_ENTRYPOINT = vs/workbench/services/extensions/node/extensionHostProcess
 # environment
+ 
 VSCODE_VERBOSE_LOGGING = true
 # environment
 __CFBundleIdentifier = com.microsoft.VSCode
 # environment
 P9K_SSH = 0
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /var/folders/cq/b7lk215544nd69njhl_h0lfw0000gn/T/vscode-ipc-5ab42aaa-def4-49fd-b629-3b31706bfdab.sock
- 
+VSCODE_IPC_HOOK_EXTHOST = /var/folders/cq/b7lk215544nd69njhl_h0lfw0000gn/T/vscode-ipc-be373b36-47c9-4195-adea-8f0655b30e7d.sock
 # environment
 VSCODE_CWD = /
 # environment
@@ -62,13 +62,15 @@ GOPATH = /Users/spurge/go
 # environment
 NVM_BIN = /Users/spurge/.nvm/versions/node/v17.3.0/bin
 # environment
+LaunchInstanceID = 84E02BDB-EE44-44BE-9E9F-CA76244DBB47
+# environment
 VSCODE_LOG_STACK = false
 # environment
 ELECTRON_RUN_AS_NODE = 1
 # default
 .FEATURES := target-specific order-only second-expansion else-if archives jobserver check-symlink
 # environment
-SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.8hoJXufpXL/Listeners
+SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.rGp0MS1TEr/Listeners
 # automatic
 %F = $(notdir $%)
 # environment
@@ -151,6 +153,8 @@ MAKEFILES :=
 PAGER = less
 # environment
 LC_ALL = C
+# environment
+SECURITYSESSIONID = 186a6
 # automatic
 ^F = $(notdir $^)
 # default
@@ -162,10 +166,9 @@ MAKELEVEL := 0
 # environment
 LANG = C
 # environment
-VSCODE_PID = 11843
- 
+VSCODE_PID = 443
 # variable set hash-table stats:
-# Load=74/1024=7%, Rehash=0, Collisions=2/98=2%
+# Load=76/1024=7%, Rehash=0, Collisions=2/100=2%
 
 # Pattern-specific Variable Values
 
@@ -173,11 +176,12 @@ VSCODE_PID = 11843
 
 # Directories
 
-# . (device 16777225, inode 19036361): 18 files, no impossibilities.
+# . (device 16777221, inode 19036361): 18 files, no impossibilities.
 
 # 18 files, no impossibilities in 1 directories.
 
 # Implicit Rules
+ 
 
 # No implicit rules.
 
@@ -250,6 +254,6 @@ run: build
 # strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
 # strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
 
-# Finished Make data base on Wed Feb  9 20:07:01 2022
+# Finished Make data base on Thu Feb 10 07:44:16 2022
 
  

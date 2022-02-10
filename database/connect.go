@@ -2,37 +2,44 @@ package database
 
 import (
 	"fmt"
-	"strconv"
+	"log"
+	"os"
 
 	"github.com/sohhamm/product-feedback-server/config"
-	"github.com/sohhamm/product-feedback-server/model"
+	"github.com/sohhamm/product-feedback-server/models"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
+	"gorm.io/gorm/logger"
 )
 
-var DB *gorm.DB
+type DbInstance struct {
+	Db *gorm.DB
+}
+
+var DB DbInstance
 
 func ConnectDB() {
 	var err error
 
-	p := config.Config("DB_PORT")
+	dsn := fmt.Sprintf("host=%s port=%s user=%s password=%s dbname=%s sslmode=%s Timezone=Asia/Calcutta", config.Config("DB_HOST"), config.Config("DB_PORT"), config.Config("DB_USER"), config.Config("DB_PASSWORD"), config.Config("DB_NAME"), config.Config("SSL"))
 
-	port, err := strconv.ParseUint(p, 10, 32)
-
-	if err != nil {
-		fmt.Println("Wrong port")
-	}
-
-	dsn := fmt.Sprintf("host=%s port=%d user=%s password=%s dbname=%s", config.Config("DB_HOST"), port, config.Config("DB_USER"), config.Config("DB_PASSWORD"), config.Config("DB_NAME"))
-
-	DB, err = gorm.Open(postgres.Open(dsn))
+	db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{
+		Logger: logger.Default.LogMode(logger.Info),
+	})
 
 	if err != nil {
-		panic("Failed to connect to the database 😥")
+		log.Fatal("Error connecting to the db 😞 \n", err)
+		os.Exit(2)
 	}
 
-	fmt.Println("Connected to the database 🔥")
+	log.Println("Connected to the database 🔥")
 
-	DB.AutoMigrate(&model.Feedback{})
+	db.Logger = logger.Default.LogMode(logger.Info)
+
+	log.Println("Running migrations .... 🚂")
+
+	db.AutoMigrate(&models.Feedback{})
+
+	DB = DbInstance{Db: db}
 
 }
