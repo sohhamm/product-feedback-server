@@ -12,5 +12,6 @@ func FeedbackRoutes(router fiber.Router) {
 	feedback.Post("/", controllers.CreateFeedback)
 	feedback.Get("/:id", controllers.GetFeedbackByID)
 	feedback.Patch("/:id", controllers.UpdateFeedbackByID)
+	feedback.Delete("/:id", controllers.DeleteFeedbackByID)
 
 }

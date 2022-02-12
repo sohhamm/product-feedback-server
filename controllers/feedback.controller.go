@@ -100,3 +100,21 @@ func UpdateFeedbackByID(c *fiber.Ctx) error {
 
 	return c.Status(fiber.StatusOK).JSON(feedback)
 }
+
+func DeleteFeedbackByID(c *fiber.Ctx) error {
+
+	id := c.Params("id")
+
+	result := database.DB.Db.Delete(&models.Feedback{}, id)
+
+	if errors.Is(result.Error, gorm.ErrRecordNotFound) {
+		return c.Status(fiber.StatusOK).JSON(fiber.Map{"message": "record not found"})
+	}
+
+	if result.Error != nil {
+		return c.Status(fiber.StatusInternalServerError).JSON(result.Error)
+	}
+
+	return c.SendStatus(fiber.StatusNoContent)
+
+}
