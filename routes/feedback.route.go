@@ -11,5 +11,6 @@ func FeedbackRoutes(router fiber.Router) {
 	feedback.Get("/", controllers.GetAllFeedbacks)
 	feedback.Post("/", controllers.CreateFeedback)
 	feedback.Get("/:id", controllers.GetFeedbackByID)
+	feedback.Patch("/:id", controllers.UpdateFeedbackByID)
 
 }
