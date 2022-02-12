@@ -1,9 +1,12 @@
 package controllers
 
 import (
+	"errors"
+
 	"github.com/gofiber/fiber/v2"
 	"github.com/sohhamm/product-feedback-server/database"
 	"github.com/sohhamm/product-feedback-server/models"
+	"gorm.io/gorm"
 )
 
 func GetAllFeedbacks(c *fiber.Ctx) error {
@@ -23,6 +26,26 @@ func CreateFeedback(c *fiber.Ctx) error {
 	}
 
 	result := database.DB.Db.Create(&feedback)
+
+	if result.Error != nil {
+		return c.Status(fiber.StatusInternalServerError).JSON(result.Error)
+	}
+
+	return c.Status(fiber.StatusOK).JSON(feedback)
+
+}
+
+func GetFeedbackByID(c *fiber.Ctx) error {
+
+	id := c.Params("id")
+
+	var feedback models.Feedback
+
+	result := database.DB.Db.First(&feedback, id)
+
+	if errors.Is(result.Error, gorm.ErrRecordNotFound) {
+		return c.Status(fiber.StatusOK).JSON(fiber.Map{"message": "record not found"})
+	}
 
 	if result.Error != nil {
 		return c.Status(fiber.StatusInternalServerError).JSON(result.Error)
