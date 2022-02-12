@@ -22,7 +22,11 @@ func CreateFeedback(c *fiber.Ctx) error {
 		return c.Status(fiber.StatusBadRequest).JSON(err.Error())
 	}
 
-	database.DB.Db.Create(&feedback)
+	result := database.DB.Db.Create(&feedback)
+
+	if result.Error != nil {
+		return c.Status(fiber.StatusInternalServerError).JSON(result.Error)
+	}
 
 	return c.Status(fiber.StatusOK).JSON(feedback)
 

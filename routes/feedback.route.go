@@ -6,7 +6,7 @@ import (
 )
 
 func FeedbackRoutes(router fiber.Router) {
-	feedback := router.Group("/feedback")
+	feedback := router.Group("/feedbacks")
 
 	feedback.Get("/", controllers.GetAllFeedbacks)
 	feedback.Post("/", controllers.CreateFeedback)

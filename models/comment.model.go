@@ -1,6 +1,8 @@
 package models
 
 type Comment struct {
-	ID      uint `gorm:"primaryKey;autoIncrement"`
-	Content string
+	CreatedAt  int  `json:"-"`
+	ID         uint `gorm:"primaryKey;autoIncrement"`
+	Content    string
+	FeedbackID uint `json:"-"`
 }
