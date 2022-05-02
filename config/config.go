@@ -8,7 +8,6 @@ import (
 )
 
 func Config(key string) string {
-
 	err := godotenv.Load()
 
 	if err != nil {

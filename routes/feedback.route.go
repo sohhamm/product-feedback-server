@@ -5,7 +5,7 @@ import (
 	"github.com/sohhamm/product-feedback-server/controllers"
 )
 
-func FeedbackRoutes(router fiber.Router) {
+func SetupFeedbackRoutesV1(router fiber.Router) {
 	feedback := router.Group("/feedbacks")
 
 	feedback.Get("/", controllers.GetAllFeedbacks)

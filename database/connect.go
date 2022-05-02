@@ -34,6 +34,15 @@ func ConnectDB() {
 
 	log.Println("Connected to the database 🔥")
 
+	sqlDB, err := db.DB()
+
+	if err != nil {
+		log.Fatal("Connection Pooling failed")
+	}
+
+	sqlDB.SetMaxIdleConns(10)
+	sqlDB.SetMaxOpenConns(100)
+
 	db.Logger = logger.Default.LogMode(logger.Info)
 
 	log.Println("Running migrations .... 🚂")

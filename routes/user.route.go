@@ -5,14 +5,8 @@ import (
 	"github.com/sohhamm/product-feedback-server/controllers"
 )
 
-func UserRoutes(router fiber.Router) {
-	router.Get("/me", controllers.CreateFeedback)
-
-}
-
-func AuthRoutes(router fiber.Router) {
-
-	router.Post("/register", controllers.CreateFeedback)
-	router.Get("/login", controllers.CreateFeedback)
-
+func SetupOAuthRoutesV1(router fiber.Router) {
+	router.Get("/auth/:provider", controllers.Login)
+	router.Get("/auth/:provider/callback", controllers.GoogleCallback)
+	router.Get("/auth/:provider/logout", controllers.GoogleLogout)
 }

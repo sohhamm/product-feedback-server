@@ -5,4 +5,8 @@ type Comment struct {
 	ID         uint `gorm:"primaryKey;autoIncrement"`
 	Content    string
 	FeedbackID uint `json:"-"`
+	UserID     int  `json:"user_id" gorm:""`
+}
+
+type ReqComment struct {
 }

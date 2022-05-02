@@ -7,12 +7,9 @@ import (
 
 func SetupRoutes(app *fiber.App) {
 	api := app.Group("/api", logger.New())
-
 	v1 := api.Group("/v1")
 
-	FeedbackRoutes(v1)
-	CommentRoutes(v1)
-	AuthRoutes(v1)
-	UserRoutes(v1)
-
+	SetupOAuthRoutesV1(v1)
+	SetupFeedbackRoutesV1(v1)
+	SetupCommentRoutesV1(v1)
 }
