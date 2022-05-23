@@ -16,7 +16,7 @@ func main() {
 	// Connect to the database
 	database.ConnectDB()
 
-	goth.UseProviders(google.New(config.Config("GOOGLE_CLIENT_ID"), config.Config("GOOGLE_CLIENT_SECRET"), "http://localhost:9000/api/v1/auth/google/callback"))
+	goth.UseProviders(google.New(config.Config("GOOGLE_CLIENT_ID"), config.Config("GOOGLE_CLIENT_SECRET"), "http://localhost:3000/auth/google/callback"))
 	// Start a new fiber app
 	app := fiber.New()
 	// Cors middleware
@@ -28,13 +28,16 @@ func main() {
 
 	//Set up routes
 	routes.SetupRoutes(app)
-	app.Get("/test", func(ctx *fiber.Ctx) error {
-		ctx.Format("<p><a href='api/v1/auth/google'>google</a></p>")
+
+	app.Get("/", func(ctx *fiber.Ctx) error {
+		ctx.Format("<p><a href='/api/v1/auth/google'>google</a></p>")
 		return nil
+
 	})
 	// Not found route
 	app.Use(func(c *fiber.Ctx) error {
 		return c.Status(fiber.StatusNotFound).JSON(fiber.Map{"message": "route not found"})
 	})
 	log.Fatal(app.Listen(config.Config("SERVER_PORT")))
+
 }
