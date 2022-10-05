@@ -2,3 +2,5 @@
 server
 # air: hot reload
 tmp
+.staging
+.production
